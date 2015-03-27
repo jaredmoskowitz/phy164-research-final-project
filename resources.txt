@@ -1,0 +1,46 @@
+Final Project Resources
+
+COMP 135 Lecture Slides (the slides are better along with lectures so take them with grain of salt)
+
+Quick Note: When you are doing some research it is good to know that machine learning techniques we use will all be “supervised learning” methods. This means that we know how to classify them already (higgs, up quark, down quark), as opposed to unsupervised learning where the goal is to look at data and see similarities between them
+
+Decision Trees
+http://www.cs.tufts.edu/comp/135/classpages/lecture2-3-IBk-DT-handout.pdf
+
+Naive Bayes
+http://www.cs.tufts.edu/comp/135/classpages/lecture4-Naive-Bayes-handout.pdf
+
+Linear Threshold Units (used for multi-layer perceptrons)
+http://www.cs.tufts.edu/comp/135/classpages/lecture5-LTU-handout.pdf
+
+Feature Selection 
+In our research, we have decided to use 8 features. However, we can play around with figuring out what is the optimal amount if we want. This lecture outlines techniques on how to do so. The wrapper method is the easiest and I suggest it’s the only one you look at.
+http://www.cs.tufts.edu/comp/135/classpages/lecture6-features-handout.pdf
+
+Algorithm Analysis (IMPORTANT)
+There are actually techniques (some straightforward involving false positive and false negative ratios to those correctly classified, but confidence intervals are much more mathematically sophisticated) for comparing different machine learning techniques. This is basically what are first part consists of. 
+http://www.cs.tufts.edu/comp/135/classpages/lecture7-evaluation-handout.pdf
+
+
+
+
+
+
+Papers and Other Useful Information
+Paper haven’t read it yet, but seems useful and outlines some machine learning algorithms we can use
+http://www.siam.org/meetings/sdm06/workproceed/Scientific%20Datasets/vilalta.pdf
+
+https://inspirehep.net/record/879273/files/fermilab-pub-10-054.pdf
+
+http://www.nature.com/ncomms/2014/140702/ncomms5308/pdf/ncomms5308.pdf
+
+http://www2.cs.cas.cz/~savicky/papers/magic_case_study.pdf
+
+
+
+
+
+Data Sets
+One resource is the data that Sliwa has
+
+https://archive.ics.uci.edu/ml/datasets/HIGGS

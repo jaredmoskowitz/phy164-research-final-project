@@ -1,0 +1,12 @@
+First Steps
+        -decide what methods to use (add below once figured out)
+                -multi-class SVM
+        -find libraries for each method
+        -figure out exact criteria for comparison between algorithms
+        -figure out how to compare speeds
+        -write program to compare methods
+                -figure out output of different libraries
+                -standardize input from outputs
+                -make statistical analysis
+                -create mathematica notebook with visualizations
+
