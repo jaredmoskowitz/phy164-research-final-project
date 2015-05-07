@@ -38,7 +38,7 @@ Support vector machines builds a hyperplane that best separate the two categorie
 \mathbf{w} \cdot \mathbf{x} - b = 0
 \end{equation}
 
-where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyperplane should have the label of 1 and anything below -1.  For a nonlinear problem, to avoid having to go into higher dimensions, a kernel trick can be applied replacing the inner product of the basis functions with a kernel function. The kernel is used to map the problem to a new space by applying a nonlinear transformation.  Data was tested without a kernel and with a gaussian (radial) kernel.
+where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyperplane should have the label of 1 and anything below -1.  
 
 \section{Results}
 
@@ -50,11 +50,9 @@ where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyp
     Random Forest & 21.346s & 23.487s & 37.249s & 38.542s \\ \hline
     Na{\"i}ve Bayes & 1.381s & 1.687s & 2.989s & 3.099s \\ \hline
     SVM - linear & 17.110s & 17.572s & 86.40s & 82.086s \\ \hline
-    SVM - radial & & & & \\ 
     \hline
   \end{tabular}
 \end{center}
-\section{Conclusion}
 
 
 \begin{center}
@@ -69,8 +67,6 @@ where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyp
     Na{\"i}ve Bayes & 87.52\% & 87.79\% & 84.94\% & 84.97\% \\ \hline
 
     SVM - linear & 87.07\% & 87.01\% & 87.33\% & 87.26\% \\ \hline
-
-    SVM - radial &  & & & \\ 
     \hline
   \end{tabular}
 \end{center}
@@ -87,8 +83,6 @@ where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyp
     Na{\"i}ve Bayes & 0.931  & 0.929 & 0.915 & 0.913 \\ \hline
 
     SVM - linear & 0.792 & 0.794 & 0.803 & 0.803 \\ \hline
-
-    SVM - radial & & & & \\ 
     \hline
   \end{tabular}
 \end{center}
