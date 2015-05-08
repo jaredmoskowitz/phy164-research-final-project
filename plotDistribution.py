@@ -10,18 +10,65 @@ import math
 
 bins = 100
 
-#weight vectors
-mll = -12.6961
-mjj = 2.9721
+#weight vectors - even machines 9 features
+#mll                =     -13.5988 
+#mjj                =       2.9715 
+#met_phi_centrality =      -0.0794 
+#mt                 =     -12.3976 
+#DYjj               =       2.8055 
+#sumMlj             =       3.5845 
+#dphill             =      -1.1754 
+#contOLV            =      -1.1174 
+#ptTotal            =      -2.7679 
+#bias               =       0.2625
+
+#weight vetors - odd machines 9 features
+mll                = -12.6961
+mjj                = 2.9721
 met_phi_centrality = -0.3015
-mt = -10.3634
-DYjj = 2.4768
-sumMlj = 5.0838
-dphill = -1.1921
-contOLV = -1.1194
-ptTotal = -4.3755
-bias = -0.1084
-def main():
+mt                 = -10.3634
+DYjj               = 2.4768
+sumMlj             = 5.0838
+dphill             = -1.1921
+contOLV            = -1.1194
+ptTotal            = -4.3755
+bias               = -0.1084
+
+#weight vectors - even machines 31 features
+#MET                = -0.7428  
+#MET_phi            =  0.0553  
+#leadingLep_E       =  0.0854  
+#leadingLep_px      =  0.193   
+#leadingLep_pz      = -0.6703  
+#subleadingLep_E    = -0.7327  
+#subleadingLep_px   =  5.6579  
+#subleadingLep_py   = -0.1106  
+#subleadingLep_pz   =  0.6753  
+#FW1                = -0.7999  
+#FW2                = -0.028   
+#FW3                = -0.2165  
+#FW4                = -0.1318  
+#FW5                =  0.4356  
+#jet_et_total       =  1.2679  
+#jet_energy_total   =  1.9876  
+#jet_px             = -3.2809  
+#jet_py             = -0.3206  
+#jet_pz             =  0.1263  
+#HT                 =  1.3328  
+#EV2                =  0.1717  
+#EV1                = -0.1017  
+#mll                =-13.6651  
+#mjj                =  2.0276  
+#met-phi_centrality = -0.2628  
+#mt                 =-10.276   
+#DYjj               =  2.9932  
+#sumMlj             = -0.6136  
+#dphill             = -0.455   
+#contOLV            = -0.9065  
+#ptTotal            = -3.4452  
+#bias               =  2.3427      
+                    
+def main():         
         if len(sys.argv) < 2:
                 print "Exception: Too few arguments"
                 print "usage: python plotDistances.py [FILE_PATH]"
@@ -47,11 +94,11 @@ def plotDistances(signal, background):
         y = calculateDistances(background)
 
         #plot histogram of distances from hyperplane
-        plt.figure(1)
-        plt.subplot(211)
-        plt.xlabel('Distance From SVM Hyperplane')
-        plt.ylabel('Frequency')
-        plt.title('Distance Of Test Data To Trained SVM Hyperplane')
+        myplt = plt.figure(1)
+        plt1 = plt.subplot(211)
+        #plt1.set_xlabel('Distance From SVM Hyperplane')
+        plt1.set_ylabel('Frequency')
+        #plt1.set_title('Distance Of Test Data To Trained SVM Hyperplane')
         signalHistInfo = plt.hist(x, bins, alpha=0.5, histtype='stepfilled', label='x')
         backgroundHistInfo = plt.hist(y, bins, alpha=0.5, histtype='stepfilled', label='y')
         plt.axis([-2, 1, 0, 3000])
@@ -61,20 +108,34 @@ def plotDistances(signal, background):
         cutValues = getCutInfo(stackedHistBins)
 
         #plot cut graph
-        plt.subplot(212)
+        plt2 = plt.subplot(212)
+        #plt2.set_xlabel('Cut Location')
+        plt2.set_ylabel('Signal / sqrt(background)')
+        plt2.set_xlabel('Distance From SVM Hyperplane')
+
         bin_edges = np.delete(bin_edges, -1)
         plt.axis([-2, 1, 0, 55])
         plt.plot(bin_edges,cutValues)
-        plt.ylabel('cuts')
-        plt.savefig('HiggsGraphs.png')
+        plt.savefig('singal-to-noise-9Even.png')
         plt.show()
 
 def calculateDistances(data):
 
         x = list()
         newData = removeLabels(data)
+        
+        #for 9 features 
+        #plane = (mll, mjj, met_phi_centrality, mt, DYjj, sumMlj, dphill, 
+        #          contOLV, ptTotal)
 
-        plane = (mll,mjj,met_phi_centrality,mt,DYjj,sumMlj,dphill,contOLV,ptTotal)
+        #for 31 features
+        plane = (MET, MET_phi, leadingLep_E, leadingLep_px, leadingLep_pz,
+                 subleadingLep_E, subleadingLep_px, subleadingLep_py, 
+                 subleadingLep_pz, FW1, FW2, FW3, FW4, FW5, jet_et_total, 
+                 jet_energy_total, jet_px, jet_py, jet_pz, HT, EV2, EV1, mll, 
+                 mjj, met_phi_centrality, mt, DYjj, sumMlj, dphill, contOLV, 
+                 ptTotal)
+
         for i in range(len(data)):
                 v = np.array(plane)
                 x.append(np.dot(newData[i], plane)/np.linalg.norm(v) - bias)
