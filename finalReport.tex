@@ -16,29 +16,35 @@
 \maketitle
 
 \section{Introduction}
-One of the integral tasks of particle physics experiments is identifying elementary particles produced in high energy collisions. This can be especially problematic for the Higgs boson, given that the primary observed decay mode, W-W+, results in the production of quark jets, which are difficult to distinguish from the background. Machine learning techniques are used to distinguish the signal from the background.  The techniques depend on the features as defined by the standard model of the particles in question.  The spped and the accuracy of the algorithm is of utmost importance as the data can be very large.  The purpose of this analysis is to compare machine learning algorithms, looking at both the accuracy and how they scale with the number of features.  
+One of the integral tasks of particle physics experiments is identifying elementary particles produced in high energy collisions. This can be especially problematic for the Higgs boson, given that the primary observed decay mode, W-W+, results in the production of quark jets, which are difficult to distinguish from the background. To help with this, supervised machine learning techniques are used for classification. These classification methods depend on the features of the particles, which are recorded by detectors at CERN.  Very large and noisy data is being dealt with, so speed and accuracy is of the utmost concern. The purpose of this analysis is to compare machine learning algorithms, looking at both the accuracy and how they scale with the number of features.  
 
 \section{Methods}
-Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions.  The machines were trained using Monte Carlo data and tested on real data from ATLAS.  The Monte Carlo data was sorted into runs with weights creating a sample that matches that of real data.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  Predictive machine models were built from each of these groups and were used to test the opposite group of runs with the same number of features.  
+Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions. This suite was used because it is preinstalled on the Cluster super computer (the environment for running these tests) and seems to be popular in the data science community.  Learners were trained using Monte Carlo data and tested on real data from ATLAS.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  These even and odd groups come from splitting our original training and test data in half so that we could run each algorithm twice on disjoint sets. Predictive machine models were built from each of these groups and were used to test the opposite group of runs with the same number of features.  
 
 \subsection{The Algorithms}
-\subsubsection{Decision Trees}
-Decision trees creates a flowchart-like structure consisting of three types of nodes. The most important of these nodes are the decision nodes which act as tests or comparisons of a feature of an event.  The branches represent the outcome of the test, which continues down until an end node or leaf is reached, representing a classification.  
-
-\subsubsection{Random Forest}
-Random forests are made up of multiple decision trees using random feature selection and bootstrap aggregation to correct for the common problem of decision tree overfitting.  This algorithm creates multiple decision trees by selecting a smaller subset of the features and building trees. Our random forests created ten trees.  For runs with nine features each tree selected four of these features and for runs with thirty-one features six features were selected.
-
-\subsubsection{Na{\"i}ve Bayes}
-This algorithm creates simple probabilistic classifiers by applying Bayes' theorem under the assumption of statistical independence between the features.  Although highly simplified, the Na{\"i"}ve Bayes algorithm has been successful in highly complex situations.  It is also highly scalable, making it an efficient algorithm.  
-
-\subsubsection{Support Vector Machine}
-Support vector machines builds a hyperplane that best separate the two categories of data. This hyperplane is built from support vectors from the training data.  An advantage of SVM is it uses a fixed number of support vectors from the sample, avoiding overfitting.  Often the data is projected into higher dimensional feature space, if the set is not separable in the given dimension.  The hyperplane is defined the set of points \textbf{x} which satisfy the equation:
+\subsubsection{Decision Trees (J48)}
+Decision trees recursively split on values of features based with priority of splits to those with the most information gain. This information gain can more specifically be represented with the equation:
 
 \begin{equation}
 \mathbf{w} \cdot \mathbf{x} - b = 0
 \end{equation}
 
-where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyperplane should have the label of 1 and anything below -1.  
+This equation corresponds to a change in entropy (metric of information) from one state to another. This is the change in entropy from Nodes represent decisions (make next decision on left child if energy greater that 126 GeV otherwise go right). The leaves represent binary classifications (signal or background). WEKA provides the c4.5 variation of this algorithm.
+
+\subsubsection{Random Forest}
+Random forests are made up of multiple decision trees using random feature selection and bootstrap aggregation to correct for the common problem of decision tree overfitting.  This algorithm creates multiple decision trees by selecting a smaller subset of the features and building trees. Our random forests created ten trees.  For runs with nine features each tree selected four of these features and for runs with thirty-one features six features were selected.
+
+\subsubsection{Na{\"i}ve Bayes}
+This algorithm creates simple probabilistic classifiers by applying Bayes' rule under the assumption of statistical independence between the features.  Although highly simplified, the Na{\"i"}ve Bayes algorithm has been successful in highly complex situations.  It is also highly scalable, making it an efficient algorithm.  
+
+\subsubsection{Support Vector Machine}
+Support vector machines builds a hyperplane that best separate the two categories of data. This hyperplane is defined by a subset of the training data called support vectors. The goal is to maximize the margin, which is the euclidean distance from a support vector to the hyperplane.  An advantage of SVMs is it uses a fixed number of support vectors from the sample, avoiding overfitting.  Often the data is projected into higher dimensional feature space, if the set is not separable in the given dimension.  The hyperplane is defined by the set of points \textbf{x} which satisfy the equation:
+
+\begin{equation}
+\mathbf{w} \cdot \mathbf{x} - b = 0
+\end{equation}
+
+where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyperplane should have the label of 1 (signal) and anything below -1 (background).  
 
 \section{Results}
 

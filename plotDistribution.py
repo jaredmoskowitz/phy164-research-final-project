@@ -21,6 +21,7 @@ dphill = -1.1921
 contOLV = -1.1194
 ptTotal = -4.3755
 bias = -0.1084
+
 def main():
         if len(sys.argv) < 2:
                 print "Exception: Too few arguments"
@@ -61,7 +62,7 @@ def plotDistances(signal, background):
         cutValues = getCutInfo(stackedHistBins)
 
         #plot cut graph
-        plt.subplot(212)
+        plt.subplot(222)
         bin_edges = np.delete(bin_edges, -1)
         plt.axis([-2, 1, 0, 55])
         plt.plot(bin_edges,cutValues)
