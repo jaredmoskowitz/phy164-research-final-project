@@ -9,12 +9,11 @@
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
 \usepackage[artemisia]{textgreek}
-
+\usepackage[margin=0.5in]{geometry}
 
 \begin{document}
 \title{A Comparison of Machine Learning Techniques for Classification of the Higgs Boson}
 \author{Jared Moskowitz \& Julia Rowe}
-\date{8 May 2015}
 
 \maketitle
 
@@ -22,10 +21,9 @@
 One of the integral tasks of particle physics experiments is identifying elementary particles produced in high energy collisions. This can be especially problematic for the Higgs boson, given that the primary observed decay mode, W-W+, results in the production of quark jets, which are difficult to distinguish from the background. To help with this, supervised machine learning techniques are used for classification. These classification methods depend on the features of the particles predicted by the standard model.  Very large and noisy data is being dealt with, so speed and accuracy is of the utmost concern. The purpose of this analysis is to compare machine learning algorithms, looking at both the accuracy and how they scale with the number of features.  
 
 \section{Methods}
-Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions. This suite was used because it is preinstalled on the Cluster super computer (the environment for running these tests) and seems to be popular in the data science community.  Learners were trained using Monte Carlo data and tested on real data from ATLAS.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  These even and odd groups come from splitting our original training and test data in half so that we could run each algorithm twice on disjoint sets. Predictive machine models were built from each of these groups and were used to test the opposite group of runs with the same number of features.  
+Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions. This suite was used because it is preinstalled on the Cluster super computer (the environment for running these tests) and seems to be popular in the data science community.  Learners were trained using Monte Carlo data and tested on real data from ATLAS.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  These even and odd groups come from splitting our original training and test data in half so that we could run each algorithm twice on disjoint sets. Predictive machine models were built from the following algorithms using each of these groups and were used to test the opposite group of runs with the same number of features.  
 
-\subsection{The Algorithms}
-\subsubsection{Decision Trees (c4.5)}
+\subsection{Decision Trees (c4.5)}
 Decision trees recursively split on values of features based with priority of splits to those with the most information gain. This information gain can more specifically be represented with the equation:
 
 \begin{equation}
@@ -34,13 +32,13 @@ Decision trees recursively split on values of features based with priority of sp
 
 This equation corresponds to a change in entropy (metric of information) from one state to another. This is the change in entropy from Nodes represent decisions (make next decision on left child if energy greater that 126 GeV otherwise go right). The leaves represent binary classifications (signal or background). WEKA provides the c4.5 variation of this algorithm.
 
-\subsubsection{Random Forest}
+\subsection{Random Forest}
 Random forests are made up of multiple decision trees using random feature selection and bootstrap aggregation to correct for the common problem of decision tree overfitting.  This algorithm creates multiple decision trees by selecting a smaller subset of the features and building trees. Our random forests created ten trees.  For runs with nine features each tree selected four of these features and for runs with thirty-one features six features were selected.
 
-\subsubsection{Na{\"i}ve Bayes}
+\subsection{Na{\"i}ve Bayes}
 This algorithm creates simple probabilistic classifiers by applying Bayes' rule under the assumption of statistical independence between the features.  Although highly simplified, the Na{\"i"}ve Bayes algorithm has been successful in highly complex situations.  It is also highly scalable, making it an efficient algorithm.  
 
-\subsubsection{Support Vector Machine}
+\subsection{Support Vector Machine}
 Support vector machines builds a hyperplane that best separate the two categories of data. This hyperplane is defined by a subset of the training data called support vectors. The goal is to maximize the margin, which is the euclidean distance from a support vector to the hyperplane.  An advantage of SVMs is it uses a fixed number of support vectors from the sample, avoiding overfitting.  Often the data is projected into higher dimensional feature space, if the set is not separable in the given dimension.  The hyperplane is defined by the set of points \textbf{x} which satisfy the equation:
 
 \begin{equation}
@@ -114,6 +112,6 @@ SVM allows physical meaning from the data to be abstracted.  Separating the test
 
 \section{Conclusion}
 
-
+From these results, the Random Forests algorithm has the highest accuracy (average of 88.65\% on 9 features and 88.67\% on 31 features).  This shows an increase in the performance on decision trees for 9 features, however on 31 features the decision tree performed better.  This is a result of the drastic reduction of features $\frac{4}{9}$ compared to $\frac{6}{31}$  Naïve Bayes performed the worst, due to the assumption that all events are statistically independent, which is not a safe assumption in this case.  Despite its poorer time complexity and smaller AROC, the support vector machine seems to be the ideal algorithm to work with in this case because of the interoperability of its model. The distance to the hyperplane obtained from the results allows for a physical interpretation of how separable the data is and gives a significance of the signal. However, the lack of scalability provides a problem.  Additionally attemption to run with a gaussian kernel took significantly more amounts of time.  Although this is likely a result of the library used as there are algorithms that can sufficiently complete this task. Future work includes testing these other support vector libraries, changing the hyper parameters of the learners, testing multi-class data by splitting the background events into heavy and light background events, and testing different kernel functions.
 
 \end{document}
