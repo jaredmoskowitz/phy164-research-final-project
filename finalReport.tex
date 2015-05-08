@@ -2,8 +2,9 @@
 
 \usepackage{amsmath}
 \usepackage{hhline}
-\usepackage{graphicx}
 \usepackage{float}
+\usepackage{graphicx}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
 \graphicspath{ {images/} }
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
@@ -24,7 +25,7 @@ One of the integral tasks of particle physics experiments is identifying element
 Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions. This suite was used because it is preinstalled on the Cluster super computer (the environment for running these tests) and seems to be popular in the data science community.  Learners were trained using Monte Carlo data and tested on real data from ATLAS.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  These even and odd groups come from splitting our original training and test data in half so that we could run each algorithm twice on disjoint sets. Predictive machine models were built from each of these groups and were used to test the opposite group of runs with the same number of features.  
 
 \subsection{The Algorithms}
-\subsubsection{Decision Trees (J48)}
+\subsubsection{Decision Trees (c4.5)}
 Decision trees recursively split on values of features based with priority of splits to those with the most information gain. This information gain can more specifically be represented with the equation:
 
 \begin{equation}
@@ -84,12 +85,8 @@ There is no significant difference in the cross validation accuracy with respect
   \end{changemargin}
 \end{table}
 
-The second performance metric recorded from the data is the AROC, the area under the Reciever Operating Characteristics curve, which is useful for comparing algorithms with different loss conditions. This is a standard measure of performance in classification experiments that corresponds to a graph with the TPrate on the vertical axis and the FPrate on the horizontal axis. The closer this number is to one, the more accurate the learner is.
+The second performance metric recorded from the data is the AROC, the area under the Reciever Operating Characteristics curve, which is useful for comparing algorithms with different loss conditions. This is a standard measure of performance in classification experiments that corresponds to a graph with the TPrate on the vertical axis and the FPrate on the horizontal axis. The closer this number is to one, the more accurate the learner.  This supports the claim that the random forest improves upon the decision tree. This also shows that naives bayes is once again worse for more features.  Additionally this metric shows that decision trees are worse for more features.
 
-things to note:
-
-also shows random forest improved on decision tree.  
-naive bayes and decision trees also worse for more features.
 
 \begin{table}[H]
   \begin{center}
@@ -105,13 +102,15 @@ naive bayes and decision trees also worse for more features.
   \end{center}
 \end{table}
 
+The time complexity of most algorithms scaled linearly or better with the number of features.  The exception to this is SVM, which had the worse time complexity. 
 
-%\begin{figure}[t]
-%    \centering
-%    \includegraphics[width=.8\columnwidth]{IMAGE FILE NAME GOES HERE}
-%    \captionof{figure}{
-%    CAPTION GOES HERE}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{signal-to-noise-9Even.png}
+    \captionof{figure}{\textbf{a}. Light green shows the background while dark green shows the signal and their distances from the hyperplane, centered at 0.  \textbf{b}. Shows the signal to noise ratio defined as $\frac{s}{\sqrt{b}}$, where \textit{s} is signal and \textit{b} is background, as a function of a cut in the data, looking at data to the left of the cut.  Here we see the optimal cut is at 0 which is the location of the hyperplane. }
+\end{figure}
+
+SVM allows physical meaning from the data to be abstracted.  Separating the test data according to how it was classified shows the ratio of signal to background as a function of cut.  This give physical meaning to the error by showing the how the error changes with changes in the hyperplane.
 
 \section{Conclusion}
 
