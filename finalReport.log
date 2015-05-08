@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  7 MAY 2015 21:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  7 MAY 2015 22:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**finalReport
+**finalReport.tex
 (./finalReport.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
@@ -177,12 +177,20 @@ LaTeX Info: Redefining \REV@mathfrak on input line 119.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/hhline.sty
 Package: hhline 1994/05/23 v2.03 Table rule package (DPC)
 )
+(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks22
+\float@box=\box43
+\@float@everytoks=\toks23
+\@floatcapt=\box44
+)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
+\KV@toks@=\toks24
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -204,20 +212,41 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count107
+\Gread@gobject=\count108
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count108
-\float@exts=\toks23
-\float@box=\box43
-\@float@everytoks=\toks24
-\@floatcapt=\box44
+(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen113
+\captionmargin@=\dimen114
+\captionwidth=\dimen115
+\caption@tempdima=\dimen116
+\caption@indent=\dimen117
+\caption@parindent=\dimen118
+\caption@hangindent=\dimen119
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/textgreek/textgreek.sty
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\par \vskip \abovecapti
+onskip \begingroup \small \rmfamily \sbox \@tempboxa {\let \\\heading@cr \@make
+@capt@title {#1}{#2}}\@ifdim {\wd \@tempboxa >\hsize }{\begingroup \samepage \f
+lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
+dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
+ }}\endgroup \vskip \belowcaptionskip .
+\c@ContinuedFloat=\count109
+Package caption Info: float package is loaded.
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/textgreek/textgreek.sty
 Package: textgreek 2011/10/09 v0.7 Greek symbols in text
 Package textgreek Info: Loading the definitions for the Greek fontencoding. on 
 input line 39.
@@ -236,16 +265,16 @@ a/m/n} {*/b/it}{LGR/artemisia/b/it} {*/bx/it}{LGR/artemisia/bx/it} {*/*/it}{LGR
 /*/sl}{LGR/artemisia/m/sl} {*/*/sc}{LGR/artemisia/m/sc} {*/*/sco}{LGR/artemisia
 /m/sco}. on input line 69.
 )
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 13.
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 14.
 
 
 Class revtex4-1 Warning: Repair the float package.
 
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 13.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 14.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 13.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 13.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 13.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 14.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 14.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 14.
 (./finalReport.aux
 
 LaTeX Warning: Label `tab:title' multiply defined.
@@ -256,37 +285,37 @@ LaTeX Warning: Label `tab:title' multiply defined.
 )
 \openout1 = `finalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 13.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 14.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 14.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2013/09/01 v1.0 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    ... okay on input line 14.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
-\scratchdimen=\dimen113
+\scratchcounter=\count110
+\scratchdimen=\dimen120
 \scratchbox=\box45
-\nofMPsegments=\count110
-\nofMParguments=\count111
+\nofMPsegments=\count111
+\nofMParguments=\count112
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count112
-\MPscratchDim=\dimen114
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen121
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
 \everyMPtoPDFconversion=\toks26
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -336,50 +365,64 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 \openout3 = `finalReportNotes.bib'.
 
 
 
 Class revtex4-1 Warning: Assuming \noaffiliation for authors.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+LaTeX Font Info:    Try loading font information for U+msa on input line 31.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 31.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<images/signal-to-noise-9Even.png, id=16, 578.16pt x 433.62pt>
+File: images/signal-to-noise-9Even.png Graphic file (type png)
+
+<use images/signal-to-noise-9Even.png>
+Package pdftex.def Info: images/signal-to-noise-9Even.png used on input line 10
+9.
+(pdftex.def)             Requested size: 246.0pt x 184.49448pt.
+
 No file finalReport.bbl.
-[2] (./finalReport.aux)
+[2 <./images/signal-to-noise-9Even.png>] (./finalReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5223 strings out of 493117
- 73601 string characters out of 6135433
- 164289 words of memory out of 5000000
- 8610 multiletter control sequences out of 15000+600000
- 11237 words of font info for 43 fonts, out of 8000000 for 9000
+ 6264 strings out of 493117
+ 92591 string characters out of 6135433
+ 196721 words of memory out of 5000000
+ 9637 multiletter control sequences out of 15000+600000
+ 13142 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,28p,892b,258s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,7n,38p,896b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
-/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on finalReport.pdf (2 pages, 137514 bytes).
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on finalReport.pdf (2 pages, 204279 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

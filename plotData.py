@@ -91,6 +91,38 @@ bias               =  -0.3427
 
 #weight vectors - even machines 31 features
 
+MET                = -0.2794 
+MET_phi            = -0.0101 
+leadingLep_E       = -0.1635 
+leadingLep_px      =  0.473  
+leadingLep_pz      = -0.3613 
+subleadingLep_E    =  0.181  
+subleadingLep_px   =  4.5234 
+subleadingLep_py   = -0.0921 
+subleadingLep_pz   =  0.1897 
+FW1                = -0.8452 
+FW2                =  0.089  
+FW3                = -0.0922 
+FW4                = -0.0913 
+FW5                =  0.3698 
+jet_et_total       =  0.822  
+jet_energy_total   =  1.5511 
+jet_px             = -3.3021 
+jet_py             = -0.0634 
+jet_pz             =  0.1501 
+HT                 =  1.1329 
+EV2                = -0.3154 
+EV1                = -0.575  
+mll                = -12.9512 
+mjj                =  1.3728 
+met_phi_centrality = -0.4484 
+mt                 = -9.4879 
+DYjj               =  3.259  
+sumMlj             =  0.4025 
+dphill             = -0.7328 
+contOLV            = -0.8639 
+ptTotal            = -3.3134 
+bias               = -0.3737
 
 
 def main():
@@ -133,13 +165,10 @@ def plotData(signal, background):
         #plot histogram of distances from hyperplane
         myplt = plt.figure(1)
         plt1 = plt.subplot(211)
-        #plt1.set_xlabel('Distance From SVM Hyperplane')
         plt1.set_ylabel('Frequency')
-        plt1.set_title('Distance Of Test Data To Trained SVM Hyperplane')
         signalHistInfo = plt.hist(sigData, bins, alpha=0.5, histtype='stepfilled', label='x')
         backgroundHistInfo = plt.hist(backData, bins, alpha=0.5, histtype='stepfilled', label='y')
         plt.axis([-2, 1, 0, 3000])
-        #plt.axis([-2, 1, 0, 3000])
 
         plt.subplots_adjust(left=None, bottom=None, right=None, top=None,wspace=None, hspace=0.4)
         stackedHistBins, bin_edges, patches = plt.hist((sigData,backData), bins, alpha=0, label='x', histtype='barstacked')
@@ -147,14 +176,11 @@ def plotData(signal, background):
 
         #plot significance graph
         plt2 = plt.subplot(212)
-        #plt2.set_xlabel('Cut Location')
-        plt1.set_title('Significance At Cut (S/sqrt(B))')
         plt2.set_ylabel('Signal / sqrt(background)')
         plt2.set_xlabel('Distance From SVM Hyperplane')
 
         bin_edges = np.delete(bin_edges, -1)
         plt.axis([-2, 1, 0, 55])
-        #plt.axis([-2, 1, 0, 55])
         plt.plot(bin_edges,cutValues)
         plt.savefig('slidePic.png')
         plt.show()
@@ -172,7 +198,7 @@ def calculateDistances(data):
 
         x = list()
         newData = removeLabels(data)
-
+        '''
         #for 9 features
         plane = (mll, mjj, met_phi_centrality, mt, DYjj, sumMlj, dphill,
                   contOLV, ptTotal)
@@ -185,7 +211,7 @@ def calculateDistances(data):
                  jet_energy_total, jet_px, jet_py, jet_pz, HT, EV2, EV1, mll,
                  mjj, met_phi_centrality, mt, DYjj, sumMlj, dphill, contOLV,
                  ptTotal)
-        '''
+    
 
         for i in range(len(data)):
                 v = np.array(plane)
