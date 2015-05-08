@@ -3,8 +3,10 @@
 \usepackage{amsmath}
 \usepackage{hhline}
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{ {images/} }
-
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
 \usepackage[artemisia]{textgreek}
 
 
@@ -16,7 +18,7 @@
 \maketitle
 
 \section{Introduction}
-One of the integral tasks of particle physics experiments is identifying elementary particles produced in high energy collisions. This can be especially problematic for the Higgs boson, given that the primary observed decay mode, W-W+, results in the production of quark jets, which are difficult to distinguish from the background. To help with this, supervised machine learning techniques are used for classification. These classification methods depend on the features of the particles, which are recorded by detectors at CERN.  Very large and noisy data is being dealt with, so speed and accuracy is of the utmost concern. The purpose of this analysis is to compare machine learning algorithms, looking at both the accuracy and how they scale with the number of features.  
+One of the integral tasks of particle physics experiments is identifying elementary particles produced in high energy collisions. This can be especially problematic for the Higgs boson, given that the primary observed decay mode, W-W+, results in the production of quark jets, which are difficult to distinguish from the background. To help with this, supervised machine learning techniques are used for classification. These classification methods depend on the features of the particles predicted by the standard model.  Very large and noisy data is being dealt with, so speed and accuracy is of the utmost concern. The purpose of this analysis is to compare machine learning algorithms, looking at both the accuracy and how they scale with the number of features.  
 
 \section{Methods}
 Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) suite of machine learning software were tested under the same conditions. This suite was used because it is preinstalled on the Cluster super computer (the environment for running these tests) and seems to be popular in the data science community.  Learners were trained using Monte Carlo data and tested on real data from ATLAS.  Data was separated into four groups: even runs with nine features, odd runs with nine features, even runs with thirty-one features, and odd runs with thirty-one features.  These even and odd groups come from splitting our original training and test data in half so that we could run each algorithm twice on disjoint sets. Predictive machine models were built from each of these groups and were used to test the opposite group of runs with the same number of features.  
@@ -26,7 +28,7 @@ Various algorithms from the Waikato Environment for Knowledge Analysis (WEKA) su
 Decision trees recursively split on values of features based with priority of splits to those with the most information gain. This information gain can more specifically be represented with the equation:
 
 \begin{equation}
-\mathbf{w} \cdot \mathbf{x} - b = 0
+\textrm{Gain} (\textrm{split}) = \textrm{Ent} (S) - \sum \limits_j \dfrac{|S_j|}{S} \textrm{Ent}(S_j)
 \end{equation}
 
 This equation corresponds to a change in entropy (metric of information) from one state to another. This is the change in entropy from Nodes represent decisions (make next decision on left child if energy greater that 126 GeV otherwise go right). The leaves represent binary classifications (signal or background). WEKA provides the c4.5 variation of this algorithm.
@@ -48,50 +50,58 @@ where \textbf{w} is the vector normal to the hyperplane.  Anything above the hyp
 
 \section{Results}
 
-\begin{center}
-  \begin{tabular}{ | l || l | l | l | l |}
-    \hline
-    Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
-    Decision Tree & 10.056s & 8.605s & 26.672s & 29.490s \\ \hline
-    Random Forest & 21.346s & 23.487s & 37.249s & 38.542s \\ \hline
-    Na{\"i}ve Bayes & 1.381s & 1.687s & 2.989s & 3.099s \\ \hline
-    SVM - linear & 17.110s & 17.572s & 86.40s & 82.086s \\ \hline
-    \hline
-  \end{tabular}
-\end{center}
+\begin{table}[H]
+  \begin{center}
+    \caption{Accuracy of Cross Validation on Training Data} \label{tab:title} 
+    \begin{tabular}{ | l || l | l | l | l |}
+      \hline
+      Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
+      Decision Tree & 88.41 \% & 87.98\% & 87.70\% & 87.75\% \\ \hline
+      Random Forest & 88.72\% & 88.57\% &  88.82\% & 88.53\% \\ \hline
+      Na{\"i}ve Bayes* & 87.52\% & 87.79\% & 84.94\% & 84.97\% \\ \hline
+      SVM - linear & 87.07\% & 87.01\% & 87.33\% & 87.26\% \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
+There is no significant difference in the cross validation accuracy with respect to the different algorithms.  Na{\"i}ve Bayes was the only one that showed a significant difference with respect to the number of features, which is expected as the assumption that the features are statistically independent worsen as the number of features increases.  From this data we do see the random forest slightly improved from the decision tree, although we do not have enough data to show if this is significant. 
 
-\begin{center}
-  \begin{tabular}{ | l || l | l | l | l |}
-    \hline
-    Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
+\begin{table}[H]
+  \begin{center}
+    \caption{Area Under the ROC Curve} \label{tab:title} 
+    \begin{tabular}{ | l || l | l | l | l |}
+      \hline
+      Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
+      Decision Tree & 0.907 & 0.904 & 0.855 & 0.861 \\ \hline
+      Random Forest & 0.929 & 0.928  & 0.929  & 0.929 \\ \hline
+      Na{\"i}ve Bayes* & 0.931  & 0.929 & 0.915 & 0.913 \\ \hline
+      SVM - linear & 0.792 & 0.794 & 0.803 & 0.803 \\ \hline
+    \end{tabular}
+  \end{center}
+  \begin{changemargin}{25px}{30px}
+  \footnotesize{
+  *Na{\"i}ve Bayes did not run cross-validation, so the even machines were tested on the odd training data and vice versa.}
+  \end{changemargin}
+\end{table}
 
-    Decision Tree & 88.41 \% & 87.98\% & 87.70\% & 87.75\% \\ \hline
+things to note:
 
-    Random Forest & 88.72\% & 88.57\% &  88.82\% & 88.53\% \\ \hline
+also shows random forest improved on decision tree.  
+naive bayes and decision trees also worse for more features.
 
-    Na{\"i}ve Bayes & 87.52\% & 87.79\% & 84.94\% & 84.97\% \\ \hline
-
-    SVM - linear & 87.07\% & 87.01\% & 87.33\% & 87.26\% \\ \hline
-    \hline
-  \end{tabular}
-\end{center}
-
-\begin{center}
-  \begin{tabular}{ | l || l | l | l | l |}
-    \hline
-    Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
-
-    Decision Tree & 0.907 & 0.904 & 0.855 & 0.861 \\ \hline
-
-    Random Forest & 0.929 & 0.928  & 0.929  & 0.929 \\ \hline
-
-    Na{\"i}ve Bayes & 0.931  & 0.929 & 0.915 & 0.913 \\ \hline
-
-    SVM - linear & 0.792 & 0.794 & 0.803 & 0.803 \\ \hline
-    \hline
-  \end{tabular}
-\end{center}
+\begin{table}[H]
+  \begin{center}
+    \caption{Time (in seconds) per Algorithm} \label{tab:title} 
+    \begin{tabular}{ | l || l | l | l | l |}  
+      \hline
+      Algorithm & 9 Even & 9 Odd & 31 Even & 31 Odd \\ \hhline{|=||=|=|=|=|}
+      Decision Tree & 10.056 & 8.605 & 26.672 & 29.490 \\ \hline
+      Random Forest & 21.346 & 23.487 & 37.249 & 38.542 \\ \hline
+      Na{\"i}ve Bayes & 1.381 & 1.687 & 2.989 & 3.099 \\ \hline
+      SVM - linear & 17.110 & 17.572 & 86.40 & 82.086 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 
 %\begin{figure}[t]
