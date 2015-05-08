@@ -42,16 +42,16 @@ bins = 100
 #bias               =       -0.2625
 
 #weight vetors - odd machines 9 features
-mll                = -12.6961
-mjj                = 2.9721
-met_phi_centrality = -0.3015
-mt                 = -10.3634
-DYjj               = 2.4768
-sumMlj             = 5.0838
-dphill             = -1.1921
-contOLV            = -1.1194
-ptTotal            = -4.3755
-bias               = -0.1084
+#mll                = -12.6961
+#mjj                = 2.9721
+#met_phi_centrality = -0.3015
+#mt                 = -10.3634
+#DYjj               = 2.4768
+#sumMlj             = 5.0838
+#dphill             = -1.1921
+#contOLV            = -1.1194
+#ptTotal            = -4.3755
+#bias               = -0.1084
 
 #weight vectors - even machines 31 features
 '''
@@ -88,14 +88,8 @@ contOLV            = -0.9065
 ptTotal            = -3.4452
 bias               =  -0.3427
 '''
-#def main():
-#mt = -10.3634
-#DYjj = 2.4768
-#sumMlj = 5.0838
-#dphill = -1.1921
-#contOLV = -1.1194
-#ptTotal = -4.3755
-#bias = -0.1084
+
+#weight vectors - even machines 31 features
 
 
 
