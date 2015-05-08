@@ -135,7 +135,7 @@ def plotData(signal, background):
         plt1 = plt.subplot(211)
         #plt1.set_xlabel('Distance From SVM Hyperplane')
         plt1.set_ylabel('Frequency')
-        #plt1.set_title('Distance Of Test Data To Trained SVM Hyperplane')
+        plt1.set_title('Distance Of Test Data To Trained SVM Hyperplane')
         signalHistInfo = plt.hist(sigData, bins, alpha=0.5, histtype='stepfilled', label='x')
         backgroundHistInfo = plt.hist(backData, bins, alpha=0.5, histtype='stepfilled', label='y')
         plt.axis([-2, 1, 0, 3000])
@@ -148,6 +148,7 @@ def plotData(signal, background):
         #plot significance graph
         plt2 = plt.subplot(212)
         #plt2.set_xlabel('Cut Location')
+        plt1.set_title('Significance At Cut (S/sqrt(B))')
         plt2.set_ylabel('Signal / sqrt(background)')
         plt2.set_xlabel('Distance From SVM Hyperplane')
 
@@ -155,7 +156,7 @@ def plotData(signal, background):
         plt.axis([-2, 1, 0, 55])
         #plt.axis([-2, 1, 0, 55])
         plt.plot(bin_edges,cutValues)
-        plt.savefig('signal-to-noise-9Odd.png')
+        plt.savefig('slidePic.png')
         plt.show()
 
 
